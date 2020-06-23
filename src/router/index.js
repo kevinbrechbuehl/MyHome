@@ -12,6 +12,11 @@ const routes = [
     component: Overview
   },
   {
+    path: "/callbacks/authorize",
+    name: "Authorize Callback",
+    component: () => import("../callbacks/Authorize.vue")
+  },
+  {
     path: "/home",
     name: "Home",
     component: Home

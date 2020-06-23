@@ -33,10 +33,10 @@ module.exports = (api, projectOptions) => {
     if (!devServer.proxy) {
       devServer.proxy = {};
     }
-    devServer.proxy["/.netlify/functions"] = {
+    devServer.proxy["/api"] = {
       target: "http://localhost:9000",
       pathRewrite: {
-        "^/\\.netlify/functions": ""
+        "^/\\api": ""
       }
     };
 

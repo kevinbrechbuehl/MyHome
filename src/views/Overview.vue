@@ -6,6 +6,7 @@
       <p>
         <button @click="logout">Logout</button>
       </p>
+      <StationsData />
     </div>
     <div v-else>
       <p>You are not authenticated</p>
@@ -19,9 +20,13 @@
 <script>
 import AuthService from "@/services/auth.service.js";
 import Constants from "@/constants.js";
+import StationsData from "@/components/StationsData.vue";
 
 export default {
   name: "Overview",
+  components: {
+    StationsData
+  },
   data() {
     return {
       isAuthenticated: AuthService.isAuthenticated()

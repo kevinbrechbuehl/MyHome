@@ -56,9 +56,7 @@ function mapData(station) {
     type: mapType(station.type),
     temperature: station.dashboard_data.Temperature,
     humidity: station.dashboard_data.Humidity,
-    co2: station.dashboard_data.CO2,
-    noise: station.dashboard_data.Noise,
-    pressure: station.dashboard_data.Pressure
+    co2: station.dashboard_data.CO2
   };
 }
 

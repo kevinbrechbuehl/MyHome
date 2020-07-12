@@ -15,8 +15,6 @@
         <th>Temperature</th>
         <th>Humidity</th>
         <th>CO2</th>
-        <th>Noise</th>
-        <th>Pressure</th>
       </tr>
       <tr v-for="item in data" :key="item.id">
         <th>{{ item.name }}</th>
@@ -28,12 +26,6 @@
         </td>
         <td>
           <span v-if="item.co2">{{ item.co2 }} ppm</span>
-        </td>
-        <td>
-          <span v-if="item.noise">{{ item.noise }} dB</span>
-        </td>
-        <td>
-          <span v-if="item.pressure">{{ item.pressure }} hPa</span>
         </td>
       </tr>
     </table>
@@ -58,7 +50,9 @@ export default {
     this.fetchData();
   },
   methods: {
+    // TODO: Add proper store and get data from there
     async fetchData() {
+      // TODO: Automatically refresh data after a specific period
       this.loading = true;
       this.data = null;
       this.error = null;
@@ -78,6 +72,7 @@ export default {
       }
     },
     async refreshToken() {
+      // TODO: Automatically refresh token when expired
       this.loading = true;
       this.error = null;
 

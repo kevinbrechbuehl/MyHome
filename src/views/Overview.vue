@@ -23,8 +23,10 @@ import Constants from "@/constants.js";
 import StationsData from "@/components/StationsData.vue";
 
 export default {
+  // TODO: Optimize UI :)
   name: "Overview",
   components: {
+    // TODO: Refactore components in whole app
     StationsData
   },
   data() {

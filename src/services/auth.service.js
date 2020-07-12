@@ -3,6 +3,7 @@ const ACCESS_TOKEN_KEY = "access_token";
 const REFRESH_TOKEN_KEY = "refresh_token";
 const TOKEN_EXPIRES_KEY = "token_expires";
 
+// TODO: Refactore service
 const AuthService = {
   generateState() {
     const state = Math.random()

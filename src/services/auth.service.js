@@ -1,3 +1,5 @@
+import cuid from "cuid";
+
 const STATE_KEY = "login_state";
 const ACCESS_TOKEN_KEY = "access_token";
 const REFRESH_TOKEN_KEY = "refresh_token";
@@ -6,9 +8,7 @@ const TOKEN_EXPIRES_KEY = "token_expires";
 // TODO: Refactore service
 const AuthService = {
   generateState() {
-    const state = Math.random()
-      .toString(36)
-      .slice(2);
+    const state = cuid();
 
     localStorage.setItem(STATE_KEY, state);
 

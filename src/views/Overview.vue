@@ -11,7 +11,7 @@
     <div v-else>
       <p>You are not authenticated</p>
       <p>
-        <button @click="login">Login</button>
+        <router-link to="/login">Login</router-link>
       </p>
     </div>
   </div>
@@ -19,7 +19,6 @@
 
 <script>
 import AuthService from "@/services/auth.service.js";
-import Constants from "@/constants.js";
 import StationsData from "@/components/StationsData.vue";
 
 export default {
@@ -35,13 +34,6 @@ export default {
     };
   },
   methods: {
-    login() {
-      window.location =
-        `/api/authorize` +
-        `?redirect_uri=${encodeURIComponent(Constants.AUTH_CALLBACK_URI)}` +
-        `&scope=${Constants.AUTH_SCOPE}` +
-        `&state=${AuthService.generateState()}`;
-    },
     logout() {
       AuthService.logout();
       this.isAuthenticated = false;

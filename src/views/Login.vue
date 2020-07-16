@@ -5,19 +5,21 @@
 </template>
 
 <script>
-import AuthService from "@/services/auth.service.js";
 import Constants from "@/constants.js";
 
 export default {
   name: "Login",
   created() {
-    AuthService.logout();
-
-    window.location =
-      `/api/authorize` +
-      `?redirect_uri=${encodeURIComponent(Constants.AUTH_CALLBACK_URI)}` +
-      `&scope=${Constants.AUTH_SCOPE}` +
-      `&state=${AuthService.generateState()}`;
+    Promise.all([
+      this.$store.dispatch("clearAuth"),
+      this.$store.dispatch("generateLoginState")
+    ]).then(() => {
+      window.location =
+        `/api/authorize` +
+        `?redirect_uri=${encodeURIComponent(Constants.AUTH_CALLBACK_URI)}` +
+        `&scope=${Constants.AUTH_SCOPE}` +
+        `&state=${this.$store.getters.loginState}`;
+    });
   }
 };
 </script>

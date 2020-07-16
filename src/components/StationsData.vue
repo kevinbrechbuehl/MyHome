@@ -2,8 +2,7 @@
   <div>
     <div v-if="loading">Loading, please wait...</div>
     <div v-else>
-      <button @click="fetchData">Refresh Data</button>&nbsp;
-      <button @click="refreshToken">Refresh Token</button>
+      <button @click="fetchData">Refresh Data</button>
     </div>
     <div v-if="error">
       <p>There was an error, please try again...</p>
@@ -33,66 +32,25 @@
 </template>
 
 <script>
-import AuthService from "@/services/auth.service.js";
-
-import axios from "axios";
-
 export default {
   name: "StationsData",
-  data() {
-    return {
-      data: null,
-      loading: false,
-      error: null
-    };
+  computed: {
+    loading() {
+      return this.$store.getters.isLoading;
+    },
+    error() {
+      return this.$store.getters.error;
+    },
+    data() {
+      return this.$store.getters.data;
+    }
   },
   created() {
     this.fetchData();
   },
   methods: {
-    // TODO: Add proper store and get data from there
-    async fetchData() {
-      // TODO: Automatically refresh data after a specific period
-      this.loading = true;
-      this.data = null;
-      this.error = null;
-
-      try {
-        const { data } = await axios.get(
-          `/api/get-stations-data` + `?token=${AuthService.getAccessToken()}`
-        );
-
-        this.data = data.sort(
-          (a, b) => a.type - b.type || a.name.localeCompare(b.name)
-        );
-        this.loading = false;
-      } catch (error) {
-        this.loading = false;
-        this.error = error.response.data;
-      }
-    },
-    async refreshToken() {
-      // TODO: Automatically refresh token when expired
-      this.loading = true;
-      this.error = null;
-
-      try {
-        const { data } = await axios.get(
-          `/api/refresh-token` +
-            `?refresh_token=${AuthService.getRefreshToken()}`
-        );
-
-        AuthService.login(
-          data.access_token,
-          data.refresh_token,
-          data.expires_in
-        );
-
-        this.loading = false;
-      } catch (error) {
-        this.loading = false;
-        this.error = error.response.data;
-      }
+    fetchData() {
+      this.$store.dispatch("fetchData");
     }
   }
 };

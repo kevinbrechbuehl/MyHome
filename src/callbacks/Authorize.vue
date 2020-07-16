@@ -12,50 +12,33 @@
 </template>
 
 <script>
-import AuthService from "@/services/auth.service.js";
-import Constants from "@/constants.js";
-
-import axios from "axios";
-
 export default {
   name: "Authorize",
   data() {
     return {
       state: this.$route.query.state,
-      code: this.$route.query.code,
-      loading: false,
-      error: null
+      code: this.$route.query.code
     };
   },
-  created() {
-    if (AuthService.verifyState(this.state)) {
-      this.fetchData();
-    } else {
-      this.error = "Invalid login state";
+  computed: {
+    loading() {
+      return this.$store.getters.isLoading;
+    },
+    error() {
+      return this.$store.getters.error;
     }
   },
+  created() {
+    this.getToken();
+  },
   methods: {
-    async fetchData() {
-      this.loading = true;
-
-      try {
-        const { data } = await axios.get(
-          `/api/get-token` +
-            `?code=${this.code}` +
-            `&scope=${Constants.AUTH_SCOPE}` +
-            `&redirect_uri=${encodeURIComponent(Constants.AUTH_CALLBACK_URI)}`
-        );
-
-        AuthService.login(
-          data.access_token,
-          data.refresh_token,
-          data.expires_in
-        );
-
+    async getToken() {
+      await this.$store.dispatch("getToken", {
+        loginState: this.state,
+        code: this.code
+      });
+      if (!this.$store.getters.error) {
         this.$router.push("/");
-      } catch (error) {
-        this.loading = false;
-        this.error = error.response.data;
       }
     }
   }

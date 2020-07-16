@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import AuthService from "@/services/auth.service.js";
 import StationsData from "@/components/StationsData.vue";
 
 export default {
@@ -28,15 +27,14 @@ export default {
     // TODO: Refactore components in whole app
     StationsData
   },
-  data() {
-    return {
-      isAuthenticated: AuthService.isAuthenticated()
-    };
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    }
   },
   methods: {
     logout() {
-      AuthService.logout();
-      this.isAuthenticated = false;
+      this.$store.dispatch("clearAuth");
     }
   }
 };

@@ -16,6 +16,7 @@ export default new Vuex.Store({
   state: {
     auth: {},
     data: [],
+    lastUpdate: null,
     loading: false,
     error: null
   },
@@ -25,6 +26,7 @@ export default new Vuex.Store({
     isLoading: state => state.loading,
     loginState: state => state.auth.loginState,
     data: state => state.data,
+    lastUpdate: state => state.lastUpdate,
     error: state => state.error
   },
 
@@ -78,6 +80,7 @@ export default new Vuex.Store({
 
     setData: (state, data) => {
       Vue.set(state, "data", [...data]);
+      Vue.set(state, "lastUpdate", new Date());
     }
   },
 

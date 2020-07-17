@@ -8,6 +8,9 @@
       <p>There was an error, please try again...</p>
       <p>{{ error }}</p>
     </div>
+    <div v-if="lastUpdate">
+      <p>Last update: {{ lastUpdate.toLocaleString() }}</p>
+    </div>
     <table v-if="data">
       <tr>
         <th></th>
@@ -34,6 +37,11 @@
 <script>
 export default {
   name: "StationsData",
+  data() {
+    return {
+      polling: null
+    };
+  },
   computed: {
     loading() {
       return this.$store.getters.isLoading;
@@ -43,15 +51,27 @@ export default {
     },
     data() {
       return this.$store.getters.data;
+    },
+    lastUpdate() {
+      return this.$store.getters.lastUpdate;
     }
-  },
-  created() {
-    this.fetchData();
   },
   methods: {
     fetchData() {
       this.$store.dispatch("fetchData");
     }
+  },
+  created() {
+    this.fetchData();
+
+    this.polling = setInterval(() => {
+      if (!this.error) {
+        this.fetchData();
+      }
+    }, 5 * 60 * 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.polling);
   }
 };
 </script>

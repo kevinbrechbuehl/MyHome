@@ -1,40 +1,31 @@
 <template>
   <div>
-    <h1>Welcome to my Home</h1>
-    <div v-if="isAuthenticated">
-      <p>You are authenticated</p>
-      <p>
-        <button @click="logout">Logout</button>
-      </p>
+    <div v-if="isAuthenticated" class="uk-container">
+      <Header />
       <StationsData />
     </div>
-    <div v-else>
+    <div v-else class="uk-position-center uk-text-center">
       <p>You are not authenticated</p>
-      <p>
-        <router-link to="/login">Login</router-link>
-      </p>
+      <router-link to="/login" class="uk-button uk-button-primary"
+        >Login</router-link
+      >
     </div>
   </div>
 </template>
 
 <script>
+import Header from "@/components/Header.vue";
 import StationsData from "@/components/StationsData.vue";
 
 export default {
-  // TODO: Optimize UI :)
   name: "Overview",
   components: {
-    // TODO: Refactore components in whole app
+    Header,
     StationsData
   },
   computed: {
     isAuthenticated() {
       return this.$store.getters.isAuthenticated;
-    }
-  },
-  methods: {
-    logout() {
-      this.$store.dispatch("clearAuth");
     }
   }
 };

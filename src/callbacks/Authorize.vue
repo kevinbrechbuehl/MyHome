@@ -1,12 +1,15 @@
 <template>
-  <div>
-    <div v-if="loading">Loading, please wait...</div>
+  <div class="uk-position-center uk-text-center">
+    <p v-if="loading">Loading, please wait...</p>
     <div v-if="error">
-      <p>There was an error validating your login, please try again...</p>
-      <p>{{ error }}</p>
       <p>
-        <router-link to="/">Go back</router-link>
+        There was an error validating your login:
+        <br />
+        <i class="uk-text-small">{{ error }}</i>
       </p>
+      <router-link to="/" class="uk-button uk-button-primary"
+        >Go back</router-link
+      >
     </div>
   </div>
 </template>
@@ -14,12 +17,6 @@
 <script>
 export default {
   name: "Authorize",
-  data() {
-    return {
-      state: this.$route.query.state,
-      code: this.$route.query.code
-    };
-  },
   computed: {
     loading() {
       return this.$store.getters.isLoading;
@@ -34,8 +31,8 @@ export default {
   methods: {
     async getToken() {
       await this.$store.dispatch("getToken", {
-        loginState: this.state,
-        code: this.code
+        loginState: this.$route.query.state,
+        code: this.$route.query.code
       });
       if (!this.$store.getters.error) {
         this.$router.push("/");

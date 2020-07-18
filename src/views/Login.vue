@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="uk-position-center uk-text-center">
     <p>Loading, please wait...</p>
   </div>
 </template>

@@ -134,7 +134,7 @@ export default new Vuex.Store({
       commit("startLoading");
 
       try {
-        if (new Date() > state.auth.tokenExpiration) {
+        if (new Date() > new Date(state.auth.tokenExpiration)) {
           const { data } = await axios.get(
             `/api/refresh-token` + `?refresh_token=${state.auth.refreshToken}`
           );

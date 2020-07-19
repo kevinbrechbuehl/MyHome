@@ -26,14 +26,16 @@ export async function handler(event) {
     const stations = [];
 
     stationsData.data.body.devices.map(device => {
-      stations.push(mapData(device));
+      const location = device.place.city;
+
+      stations.push(mapData(device, location));
       device.modules.map(module => {
-        stations.push(mapData(module));
+        stations.push(mapData(module, location));
       });
     });
 
     homeCoachsData.data.body.devices.map(device => {
-      stations.push(mapData(device));
+      stations.push(mapData(device, device.place.city));
     });
 
     return {
@@ -49,12 +51,16 @@ export async function handler(event) {
   }
 }
 
-function mapData(station) {
+function mapData(station, location) {
   return {
     id: station._id,
     name: station.module_name || station.station_name,
+    location: location,
     type: mapType(station.type),
     temperature: station.dashboard_data.Temperature,
+    temperature_min: station.dashboard_data.min_temp,
+    temperature_max: station.dashboard_data.max_temp,
+    temperature_trend: station.dashboard_data.temp_trend,
     humidity: station.dashboard_data.Humidity,
     co2: station.dashboard_data.CO2
   };

@@ -1,5 +1,5 @@
 <template>
-  <div uk-grid class="uk-margin-top">
+  <div uk-grid class="uk-margin-top margin-bottom">
     <template v-for="station in data">
       <OutdoorModule
         v-if="station.type === 'outdoor'"
@@ -11,7 +11,7 @@
         v-if="station.type === 'indoor'"
         :key="station.id"
         :data="station"
-        class="uk-width-1-1 uk-width-1-2@s"
+        class="uk-width-1-1 uk-width-1-2@m"
       />
     </template>
   </div>
@@ -51,3 +51,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.margin-bottom {
+  margin-bottom: 40px;
+}
+</style>

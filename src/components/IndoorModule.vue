@@ -7,9 +7,11 @@
           >{{ data.temperature }} &#8451;</span
         >
       </div>
-      <div class="uk-flex">
-        <span>{{ data.humidity }} %</span>
-        <span class="flex-right">{{ data.co2 }} ppm</span>
+      <div class="uk-flex uk-flex-middle">
+        <span uk-icon="drop" ratio="0.8"></span>
+        <span class="margin-xsmall-left">{{ data.humidity }} %</span>
+        <span uk-icon="feather" ratio="0.4" class="flex-right"></span>
+        <span class="margin-xsmall-left">{{ data.co2 }} ppm</span>
       </div>
     </div>
   </div>
@@ -26,3 +28,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.uk-card {
+  background-color: #f7fafc;
+}
+</style>

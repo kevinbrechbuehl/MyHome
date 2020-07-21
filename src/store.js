@@ -130,8 +130,10 @@ export default new Vuex.Store({
       }
     },
 
-    async fetchData({ commit, dispatch, state }) {
-      commit("startLoading");
+    async fetchData({ commit, dispatch, state }, preventLoadingIndicator) {
+      if (!preventLoadingIndicator) {
+        commit("startLoading");
+      }
 
       try {
         if (new Date() > new Date(state.auth.tokenExpiration)) {

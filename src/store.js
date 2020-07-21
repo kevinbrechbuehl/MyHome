@@ -153,7 +153,7 @@ export default new Vuex.Store({
         );
 
         const sortedData = data.sort(
-          (a, b) => a.type - b.type || a.name.localeCompare(b.name)
+          (a, b) => b.type.localeCompare(a.type) || a.name.localeCompare(b.name)
         );
 
         commit("setData", sortedData);

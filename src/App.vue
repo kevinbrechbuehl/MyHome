@@ -9,6 +9,10 @@ html {
   background-color: #000;
 }
 
+.text-white {
+  color: #fff;
+}
+
 .uk-card {
   border-radius: 5px;
 }

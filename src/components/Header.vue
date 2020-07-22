@@ -8,15 +8,24 @@
     ></button>
 
     <span v-if="loading">Loading ...</span>
-    <span v-else-if="error" class="uk-text-danger uk-text-italic">{{
-      error
-    }}</span>
+    <span v-else-if="error" class="uk-text-danger uk-text-italic">
+      {{ error }}
+    </span>
     <span v-else-if="lastUpdate">{{ lastUpdate }}</span>
+
+    <a
+      href="https://github.com/aquasonic/myhome"
+      target="_blank"
+      rel="noopener noreferrer"
+      uk-icon="github"
+      class="flex-right"
+      title="GitHub"
+    ></a>
 
     <button
       @click="logout"
       uk-icon="sign-out"
-      class="flex-right"
+      class="uk-margin-small-left"
       title="Logout"
     ></button>
   </div>

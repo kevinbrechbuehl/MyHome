@@ -11,16 +11,14 @@
       </vue-pull-refresh>
     </div>
     <div v-else class="uk-position-center uk-text-center">
-      <p>You are not authenticated</p>
-      <router-link to="/login" class="uk-button uk-button-primary"
-        >Login</router-link
-      >
+      <NotAuthenticated />
     </div>
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
+import NotAuthenticated from "@/components/NotAuthenticated.vue";
 import StationsData from "@/components/StationsData.vue";
 import VuePullRefresh from "vue-pull-refresh";
 
@@ -28,6 +26,7 @@ export default {
   name: "Overview",
   components: {
     Header,
+    NotAuthenticated,
     StationsData,
     VuePullRefresh
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="uk-position-center uk-text-center">
+  <div class="uk-position-center uk-text-center text-white">
     <p v-if="loading">Loading, please wait...</p>
     <div v-if="error">
       <p>

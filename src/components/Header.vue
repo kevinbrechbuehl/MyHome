@@ -14,7 +14,7 @@
     <span v-else-if="lastUpdate">{{ lastUpdate }}</span>
 
     <a
-      href="https://github.com/aquasonic/myhome"
+      href="https://github.com/aquasonic/myhome.vue"
       target="_blank"
       rel="noopener noreferrer"
       uk-icon="github"

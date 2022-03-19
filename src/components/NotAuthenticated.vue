@@ -11,10 +11,10 @@
     <p class="uk-text-small uk-text-light uk-margin-large-top">
       powered by
       <a
-        href="https://github.com/aquasonic/myhome.vue"
+        href="https://github.com/kevinbrechbuehl/myhome.vue"
         target="_blank"
         rel="noopener noreferrer"
-        >aquasonic</a
+        >Kevin Brechbühl</a
       >
       <br />data by
       <a

@@ -14,4 +14,4 @@ Netatmo account and use the dashboard.
 
 ## License
 
-MIT License (MIT) &copy; [Kevin Brechbühl](https://github.com/aquasonic)
+MIT License (MIT) &copy; [Kevin Brechbühl](https://github.com/kevinbrechbuehl)

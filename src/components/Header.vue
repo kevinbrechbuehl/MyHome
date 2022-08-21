@@ -14,7 +14,7 @@
     <span v-else-if="lastUpdate">{{ lastUpdate }}</span>
 
     <a
-      href="https://github.com/kevinbrechbuehl/myhome.vue"
+      href="https://github.com/kevinbrechbuehl/myhome"
       target="_blank"
       rel="noopener noreferrer"
       uk-icon="github"

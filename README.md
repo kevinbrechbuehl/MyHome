@@ -8,7 +8,7 @@ iPad and hanging on my wall in the living room.
 
 ## Get it too
 
-The dashboard is available at https://myhome-vue.netlify.app. If you own a Netatmo
+The dashboard is available at https://myhome.ctor.io. If you own a Netatmo
 Weather Station or a Healthy Home Coach (or both) you can login with your
 Netatmo account and use the dashboard.
 

@@ -11,7 +11,7 @@
     <p class="uk-text-small uk-text-light uk-margin-large-top">
       powered by
       <a
-        href="https://github.com/kevinbrechbuehl/myhome.vue"
+        href="https://github.com/kevinbrechbuehl/myhome"
         target="_blank"
         rel="noopener noreferrer"
         >Kevin Brechbühl</a
